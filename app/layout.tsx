@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import { Footer, Header, MobileActions } from "@/components/layout";
 import { business } from "@/data/site";
+import { MotionObserver } from "@/components/motion";
 
 const serif = Cormorant_Garamond({ subsets: ["latin"], variable: "--font-serif", weight: ["600", "700"] });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
@@ -28,13 +29,14 @@ const localBusiness = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${serif.variable} ${manrope.variable}`}>
-      <body className="font-sans antialiased">
+    <html lang="en" suppressHydrationWarning className={`${serif.variable} ${manrope.variable}`}>
+      <body suppressHydrationWarning className="font-sans antialiased">
         <a href="#main" className="fixed left-4 top-3 z-[100] -translate-y-20 bg-gold px-4 py-3 font-bold focus:translate-y-0">Skip to content</a>
         <Header />
         {children}
         <Footer />
         <MobileActions />
+        <MotionObserver />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }} />
       </body>
     </html>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowRight, CheckCircle2, ChevronDown, Loader2, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2, ChevronDown, Loader2, X } from "lucide-react";
 import { activities, business, faqs, images, visitorExperiences } from "@/data/site";
 import { ActivityCard } from "./ui";
 
@@ -11,6 +11,15 @@ export function VisitorSelector() {
   const categories = Object.keys(visitorExperiences) as (keyof typeof visitorExperiences)[];
   const [active, setActive] = useState(categories[0]);
   return <div className="mt-12"><div className="flex gap-2 overflow-x-auto pb-3" role="tablist" aria-label="Visitor type">{categories.map(category => <button key={category} role="tab" aria-selected={active === category} onClick={() => setActive(category)} className={`min-h-12 shrink-0 rounded-full px-5 text-xs font-bold uppercase tracking-wider transition-colors ${active === category ? "bg-gold text-ink" : "border border-white/25 text-white"}`}>{category}</button>)}</div><div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{visitorExperiences[active].map((item, i) => <div key={item} className="rounded-2xl border border-white/15 bg-white/5 p-6"><span className="font-serif text-3xl text-gold">0{i + 1}</span><h3 className="mt-8 font-serif text-2xl font-bold text-white">{item}</h3></div>)}</div></div>;
+}
+
+export function AdventureJourney() {
+  const featured = activities.slice(0, 6);
+  const [active, setActive] = useState(featured[0]);
+  return <div className="grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:items-center">
+    <div className="order-2 lg:order-1">{featured.map((activity, index) => <Link key={activity.slug} href={`/attractions/${activity.slug}`} onMouseEnter={() => setActive(activity)} onFocus={() => setActive(activity)} data-active={active.slug === activity.slug} className="journey-row group flex items-center justify-between gap-4 border-b border-white/15 py-5 text-white"><span className="flex items-center gap-5"><span className="font-serif text-lg text-white/35">0{index + 1}</span><strong className="font-serif text-2xl md:text-3xl">{activity.name}</strong></span><ArrowUpRight className="shrink-0"/></Link>)}</div>
+    <div className="order-1 lg:order-2"><div className="relative min-h-[520px] overflow-hidden rounded-[2rem]"><Image key={active.slug} src={active.image} alt={`Temporary placeholder for ${active.name}`} fill sizes="(max-width: 1024px) 100vw, 55vw" className="animate-[reveal_.55s_ease-out] object-cover"/><div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"/><div className="absolute inset-x-0 bottom-0 p-7 text-white"><span className="text-[10px] font-bold uppercase tracking-[.2em] text-gold">Active experience</span><p className="mt-2 max-w-lg text-sm leading-6 text-white/70">{active.description}</p></div></div></div>
+  </div>;
 }
 
 export function ActivityFilter() {
