@@ -1,0 +1,5 @@
+import type { Metadata } from "next";
+import { PageHero, CTASection } from "@/components/ui";
+import { images } from "@/data/site";
+export const metadata: Metadata={title:"Guest Reviews",description:"A future home for verified Google reviews from Ban Jungle Adventure visitors."};
+export default function Reviews(){return <main id="main"><PageHero eyebrow="Guest stories" title="Real voices. Real adventures." text="This section is ready for a verified Google reviews integration. No placeholder testimonials or ratings are shown." image={images.group}/><section className="section-pad bg-cream"><div className="container-site grid min-h-[360px] place-items-center rounded-[2rem] border border-dashed border-ink/25 text-center"><div className="max-w-xl p-8"><span className="font-serif text-6xl text-gold">“</span><h2 className="mt-3 font-serif text-4xl font-bold">Verified reviews coming here.</h2><p className="mt-5 text-sm leading-7 text-ink/60">Connect the approved Google Business Profile or CMS review source to publish current rating, count and selected real reviews.</p></div></div></section><CTASection/></main>}

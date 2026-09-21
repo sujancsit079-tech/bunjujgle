@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import { PageHero, CTASection } from "@/components/ui";
+import { images } from "@/data/site";
+export const metadata: Metadata={title:"Adventure Journal",description:"Travel tips, outdoor activity guides and Ban Jungle Adventure stories from Kathmandu."};
+const categories=["Adventure Kathmandu","Family","School Trips","Outdoor Activities","Jungle Stay","Travel Tips","Events"];
+export default function Blog(){return <main id="main"><PageHero eyebrow="Journal" title="Field notes from the jungle." text="A content-ready journal for useful local guides, outdoor ideas and stories from Ban Jungle Adventure." image={images.nature}/><section className="section-pad bg-cream"><div className="container-site"><div className="flex flex-wrap gap-2">{categories.map(x=><span key={x} className="rounded-full border border-ink/20 px-5 py-3 text-xs font-bold uppercase tracking-wider">{x}</span>)}</div><div className="mt-12 rounded-[2rem] bg-white p-10 text-center md:p-16"><h2 className="font-serif text-4xl font-bold">The journal is ready for its first story.</h2><p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-ink/60">Connect a CMS to publish authored, dated articles with canonical URLs, contents, related posts and article metadata.</p></div></div></section><CTASection/></main>}

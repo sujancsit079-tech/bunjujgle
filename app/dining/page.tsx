@@ -1,0 +1,5 @@
+import type { Metadata } from "next";
+import { ContentPage } from "@/components/content-page";
+import { images } from "@/data/site";
+export const metadata: Metadata={title:"Restaurant & Jungle Dining",description:"Explore the restaurant and group dining experience at Ban Jungle Adventure in Kathmandu."};
+export default function Dining(){return <ContentPage eyebrow="Restaurant" title="Good food, fresh air, no rush." intro="Refuel between activities or gather around the table after a day outside." image={images.dining} blocks={[{title:"Dining experience",text:"The restaurant adds a relaxed food experience to family visits, adventure days and group gatherings."},{title:"Food & menu",text:"Menus and availability can change. Contact Ban Jungle Adventure for the current menu and meal arrangements."},{title:"Vegetarian options",text:"Ask the restaurant team to confirm current vegetarian choices and discuss dietary needs before your visit."},{title:"Group dining",text:"Planning for a school, family or organisation? Contact the team with your group size and preferred date."}]}/>}

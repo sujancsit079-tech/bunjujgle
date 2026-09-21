@@ -1,0 +1,1 @@
+export default function Terms(){return <main id="main" className="container-site min-h-screen pb-24 pt-40"><h1 className="section-title">Terms & conditions</h1><p className="mt-7 max-w-2xl leading-8 text-ink/65">Activity, booking, cancellation and visitor terms must be provided and approved by Ban Jungle Adventure before online booking is enabled.</p></main>}

@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound(){return <main id="main" className="grid min-h-screen place-items-center bg-forest p-6 text-center text-white"><div><div className="font-serif text-8xl text-gold">404</div><h1 className="mt-3 font-serif text-5xl font-bold">This trail ends here.</h1><p className="mt-5 text-white/60">The page you were looking for could not be found.</p><Link href="/" className="button-primary mt-8">Back to basecamp</Link></div></main>}
