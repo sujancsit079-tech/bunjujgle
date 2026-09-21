@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight, Clock3, Compass, Heart, MapPin, Play, ShieldCheck, Sparkles, Trees, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Compass, Footprints, Play, ShieldCheck, Sparkles, Trees, Users } from "lucide-react";
 import { activities, business, images, packages, timeline } from "@/data/site";
 import { ActivityCard, PackageCard, SectionHeading } from "@/components/ui";
 import { AdventureJourney, FAQAccordion, VisitorSelector } from "@/components/interactive";
@@ -14,19 +14,23 @@ const principles = [
 
 export default function Home() {
   return <main id="main">
-    <section className="grain relative flex min-h-screen items-end overflow-hidden bg-forest pb-24 pt-40 text-white">
-      <Image src={images.hero} alt="Temporary placeholder for Ban Jungle Adventure hero photography" fill priority sizes="100vw" className="scale-105 object-cover animate-[pulse_14s_ease-in-out_infinite]"/>
-      <div className="absolute inset-0 bg-gradient-to-r from-[#071b13]/90 via-[#102b21]/45 to-black/10"/><div className="absolute inset-0 bg-gradient-to-t from-[#071b13]/80 via-transparent to-black/35"/>
-      <div className="container-site relative z-10">
-        <div className="reveal eyebrow text-gold">Adventure • Nature • Kathmandu</div>
-        <h1 className="display mt-6 max-w-5xl reveal">Adventure begins where the <em className="font-normal text-gold">city ends.</em></h1>
-        <p className="mt-7 max-w-2xl text-base leading-8 text-white/75 reveal md:text-lg">Discover thrilling outdoor experiences, jungle adventures and peaceful escapes at Ban Jungle Adventure in Kathmandu.</p>
-        <div className="mt-9 flex flex-wrap gap-3 reveal"><Link href="#adventures" className="button-primary">Explore adventures <ArrowUpRight size={17}/></Link><Link href="/plan-your-visit" className="button-outline">Plan your visit</Link></div>
-        <div className="mt-14 flex flex-col gap-6 border-t border-white/20 pt-7 md:flex-row md:items-center md:justify-between"><a href="#intro" className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.18em] text-white/60">Scroll to explore <ArrowDown size={15}/></a><div className="flex flex-wrap gap-x-7 gap-y-3 rounded-2xl border border-white/15 bg-white/10 px-5 py-4 text-xs backdrop-blur-md"><span className="flex items-center gap-2"><MapPin size={15} className="text-gold"/>Panchmane, Kathmandu</span><span className="flex items-center gap-2"><Clock3 size={15} className="text-gold"/>Hours: confirm before visiting</span><span className="flex items-center gap-2"><Sparkles size={15} className="text-gold"/>Adventure experiences</span></div></div>
+    <section className="hero-jungle grain relative min-h-[980px] bg-forest pt-36 text-white lg:min-h-[900px] lg:pt-48">
+      <div className="absolute inset-0 overflow-hidden"><Image src={images.zipline} alt="Temporary zipline hero placeholder for Ban Jungle Adventure" fill priority sizes="100vw" className="hero-jungle-image object-cover"/></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#03140b]/95 via-[#092417]/55 to-transparent"/><div className="absolute inset-0 bg-gradient-to-t from-[#061b10]/75 via-transparent to-black/30"/>
+      <div className="container-site relative z-10 pt-16 lg:pt-20">
+        <p className="hero-script reveal">Discover <span aria-hidden="true">◇</span></p>
+        <h1 className="mt-1 max-w-4xl text-[clamp(3rem,7vw,6.4rem)] font-extrabold leading-[.92] tracking-[-.055em] text-[#b8ef35] reveal">Ban Jungle Adventure.</h1>
+        <p className="mt-6 max-w-xl text-base leading-7 text-white/75 reveal">Thrilling outdoor experiences, peaceful jungle escapes and shared adventures in Panchmane, Kathmandu.</p>
+        <div className="mt-8 flex flex-wrap gap-4 reveal"><Link href="#adventures" className="hero-button"> <Compass size={19}/>Explore activities <ArrowRight size={18}/></Link><a href="#story" className="hero-button-outline"><Play size={18} fill="currentColor"/>Watch our story</a></div>
+      </div>
+      <div className="hero-organic-edge" aria-hidden="true"/>
+      <div className="container-site relative z-20 mt-16 grid gap-5 px-4 md:absolute md:inset-x-0 md:bottom-[-116px] md:grid-cols-3 md:px-0">
+        <HeroCard href="/attractions/roller-coaster-zipline" image={images.zipline} title="Zipline Adventure" icon={Compass} eager/>
+        <HeroCard href="/plan-your-visit" image={images.nature} title="Jungle Escape" icon={Footprints}/>
+        <HeroCard href="/packages/family-adventure" image={images.group} title="Family Fun" icon={Users}/>
       </div>
     </section>
-
-    <section className="relative z-10 -mt-10 px-4"><div className="mx-auto grid max-w-[1240px] overflow-hidden rounded-[2rem] bg-white shadow-2xl md:grid-cols-3" data-reveal>{[[Compass,"Adventure in motion","Zipline, climbing, swinging and outdoor challenges."],[Trees,"A forest reset","Space to breathe beyond Kathmandu's everyday pace."],[Heart,"Made for together","Days shaped for families, friends, schools and groups."]].map(([Icon,title,text],i)=>{const I=Icon as typeof Compass;return <article key={title as string} className="group border-b border-ink/10 p-7 last:border-0 md:border-b-0 md:border-r"><I className="text-gold transition-transform duration-300 group-hover:rotate-12"/><span className="mt-7 block text-[10px] font-bold uppercase tracking-[.2em] text-jungle">0{i+1}</span><h2 className="mt-2 font-serif text-2xl font-bold">{title as string}</h2><p className="mt-2 text-sm leading-6 text-ink/55">{text as string}</p></article>})}</div></section>
+    <div className="h-8 bg-cream md:h-44" aria-hidden="true"/>
 
     <section id="intro" className="section-pad overflow-hidden bg-cream"><div className="container-site grid gap-16 lg:grid-cols-[.92fr_1.08fr] lg:items-center">
       <div className="relative min-h-[580px]" data-reveal="left"><div className="clip-image absolute inset-y-0 left-0 w-[82%]" data-reveal><Image src={images.nature} alt="Temporary forest placeholder for Ban Jungle Adventure" fill sizes="(max-width:1024px) 85vw,42vw" className="object-cover"/></div><div className="float-slow absolute bottom-4 right-0 h-64 w-[48%] overflow-hidden rounded-[1.5rem] border-[10px] border-cream"><Image src={images.group} alt="Temporary group experience placeholder" fill sizes="25vw" className="object-cover"/></div><div className="absolute right-0 top-8 grid size-32 place-items-center rounded-full bg-gold p-4 text-center text-[10px] font-extrabold uppercase leading-5 tracking-[.12em] text-ink">Adventure<br/>meets<br/>nature</div></div>
@@ -45,7 +49,7 @@ export default function Home() {
 
     <section className="section-pad bg-white"><div className="container-site"><div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between" data-reveal><SectionHeading eyebrow="Our gallery" title="The wild looks good on everyone." text="A preview layout ready for real Ban Jungle Adventure photography. Current imagery is temporary and clearly identified in its alt text."/><Link href="/gallery" className="button-outline self-start">Open gallery <ArrowRight size={16}/></Link></div><div className="mt-12 grid gap-4 md:grid-cols-12"><GalleryImage src={images.zipline} className="md:col-span-7 md:row-span-2" label="Adventure"/><GalleryImage src={images.stay} className="md:col-span-5" label="Stay"/><GalleryImage src={images.dining} className="md:col-span-5" label="Dining"/></div></div></section>
 
-    <section className="grain relative min-h-[760px] overflow-hidden py-24 text-white"><Image src={images.nature} alt="Temporary cinematic forest story placeholder" fill sizes="100vw" className="object-cover"/><div className="absolute inset-0 bg-black/55"/><div className="container-site relative z-10 flex min-h-[570px] flex-col items-center justify-center text-center" data-reveal="scale"><button aria-label="Play Ban Jungle story video placeholder" className="grid size-24 place-items-center rounded-full border border-white/50 bg-white/10 backdrop-blur transition-colors hover:bg-gold hover:text-ink"><Play fill="currentColor"/></button><div className="eyebrow mt-10 text-gold">Our story</div><h2 className="section-title mt-6 max-w-5xl">A journey built on adventure and the desire to bring people closer to the outdoors.</h2><p className="mt-6 max-w-xl text-sm leading-7 text-white/65">Video-ready storytelling area. Business-owned footage can replace this temporary image without changing the layout.</p></div></section>
+    <section id="story" className="grain relative min-h-[760px] overflow-hidden py-24 text-white"><Image src={images.nature} alt="Temporary cinematic forest story placeholder" fill sizes="100vw" className="object-cover"/><div className="absolute inset-0 bg-black/55"/><div className="container-site relative z-10 flex min-h-[570px] flex-col items-center justify-center text-center" data-reveal="scale"><button aria-label="Play Ban Jungle story video placeholder" className="grid size-24 place-items-center rounded-full border border-white/50 bg-white/10 backdrop-blur transition-colors hover:bg-gold hover:text-ink"><Play fill="currentColor"/></button><div className="eyebrow mt-10 text-gold">Our story</div><h2 className="section-title mt-6 max-w-5xl">A journey built on adventure and the desire to bring people closer to the outdoors.</h2><p className="mt-6 max-w-xl text-sm leading-7 text-white/65">Video-ready storytelling area. Business-owned footage can replace this temporary image without changing the layout.</p></div></section>
 
     <section className="section-pad bg-cream"><div className="container-site" data-reveal><SectionHeading eyebrow="Find your pace" title="A different jungle for every visitor." text="Choose who you are visiting with to see the types of experiences that may fit your day."/><div className="mt-2 rounded-[2rem] bg-forest p-5 md:p-10"><VisitorSelector/></div></div></section>
 
@@ -65,4 +69,8 @@ export default function Home() {
 
 function GalleryImage({src,className,label}:{src:string;className:string;label:string}) {
   return <Link href="/gallery" className={`image-card group relative min-h-[320px] overflow-hidden rounded-[2rem] ${className}`} data-reveal><Image src={src} alt={`Temporary ${label.toLowerCase()} gallery placeholder`} fill sizes="(max-width:768px) 100vw,60vw" className="object-cover"/><div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"/><div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-6 text-white"><strong className="font-serif text-3xl">{label}</strong><span className="card-arrow grid size-12 place-items-center rounded-full bg-gold text-ink"><ArrowUpRight/></span></div></Link>;
+}
+
+function HeroCard({href,image,title,icon:Icon,eager=false}:{href:string;image:string;title:string;icon:typeof Compass;eager?:boolean}) {
+  return <Link href={href} className="hero-card group" aria-label={`Explore ${title}`}><div className="relative h-40 overflow-hidden"><Image src={image} alt={`Temporary ${title} hero card placeholder`} fill loading={eager?"eager":"lazy"} sizes="(max-width:768px) 100vw,33vw" className="object-cover"/><div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent"/><span className="absolute bottom-4 left-5 grid size-14 place-items-center rounded-full border-2 border-[#b8ef35] bg-[#102b21]/70 text-[#b8ef35] backdrop-blur"><Icon size={25}/></span><span className="card-arrow absolute bottom-4 right-4 grid size-12 place-items-center rounded-full bg-white text-ink shadow-lg"><ArrowRight/></span></div><div className="flex min-h-20 items-center px-6"><strong className="text-xl font-extrabold text-[#102b21] md:text-2xl">{title}</strong></div></Link>;
 }

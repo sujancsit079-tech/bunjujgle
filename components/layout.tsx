@@ -62,7 +62,7 @@ export function Footer() {
         <FooterLinks title="Plan" items={[["About Us","/about-us"],["Plan Your Visit","/plan-your-visit"],["Safety","/safety"],["FAQ","/faq"],["Reviews","/reviews"],["Contact","/contact"]]} />
         <div><h3 className="text-xs font-bold uppercase tracking-[.18em] text-gold">Find us</h3><p className="mt-5 flex gap-3 text-sm leading-6 text-white/70"><MapPin className="mt-1 shrink-0" size={17}/>{business.address}</p><a className="mt-4 block text-sm hover:text-gold" href={`tel:${business.phoneLink}`}>{business.phone}</a><a className="mt-2 block break-all text-sm hover:text-gold" href={`mailto:${business.email}`}>{business.email}</a></div>
       </div>
-      <div className="flex flex-col gap-3 pt-7 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between"><p>© 2026 Ban Jungle Adventure. All rights reserved.</p><div className="flex gap-5"><Link href="/privacy-policy">Privacy</Link><Link href="/terms">Terms</Link></div></div>
+      <div className="flex flex-col gap-3 pt-7 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between"><p>© 2026 Ban Jungle Adventure. All rights reserved. <a className="hover:text-white" href="https://commons.wikimedia.org/wiki/File:Zip_Line_Canopy_Tour_Costa_Rica.jpg" target="_blank" rel="noreferrer">Temporary zipline image: Costaricapro, CC BY-SA 3.0</a></p><div className="flex gap-5"><Link href="/privacy-policy">Privacy</Link><Link href="/terms">Terms</Link></div></div>
     </div>
   </footer>;
 }

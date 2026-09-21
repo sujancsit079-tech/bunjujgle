@@ -29,7 +29,7 @@ export const business = {
 // Temporary editorial imagery. Replace with optimized, business-owned photography in the CMS.
 export const images = {
   hero: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=2200&q=85",
-  zipline: "https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1600&q=82",
+  zipline: "https://upload.wikimedia.org/wikipedia/commons/6/67/Zip_Line_Canopy_Tour_Costa_Rica.jpg",
   swing: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1400&q=82",
   climbing: "https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&w=1400&q=82",
   cycling: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1400&q=82",
