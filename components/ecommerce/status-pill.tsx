@@ -1,11 +1,11 @@
 import type { OrderStatus } from "@/data/ecommerce";
 
 const styles: Record<OrderStatus, string> = {
-  Pending: "bg-amber-100 text-amber-800",
-  Processing: "bg-sky-100 text-sky-800",
-  Shipped: "bg-indigo-100 text-indigo-800",
-  Delivered: "bg-emerald-100 text-emerald-800",
-  Cancelled: "bg-rose-100 text-rose-800",
+  Pending: "bg-amber-500/15 text-amber-600",
+  Processing: "bg-sky-500/15 text-sky-600",
+  Shipped: "bg-indigo-500/15 text-indigo-500",
+  Delivered: "bg-emerald-500/15 text-emerald-600",
+  Cancelled: "bg-rose-500/15 text-rose-600",
 };
 
 export function StatusPill({ status }: { status: OrderStatus }) {

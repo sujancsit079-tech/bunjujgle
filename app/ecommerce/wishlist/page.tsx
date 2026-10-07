@@ -2,20 +2,21 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Heart } from "lucide-react";
-import { products } from "@/data/ecommerce";
-import { ProductCard } from "@/components/ecommerce/product-card";
+import { Heart, ShoppingBag } from "lucide-react";
+import { PageHeader, ProductCard, btnOutline, btnPrimary } from "@/components/ecommerce/ui";
 import { useStore } from "@/components/ecommerce/store";
 
 export default function WishlistPage() {
-  const { wishlist } = useStore();
-  const list = products.filter((p) => wishlist.includes(p.id));
-  return <div className="mx-auto max-w-7xl px-4 py-10 lg:px-8">
-    <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-serif text-5xl font-bold tracking-tight">Wishlist</motion.h1>
-    <p className="mt-2 text-black/55">{list.length} saved item{list.length === 1 ? "" : "s"}</p>
-    {list.length === 0 ? <div className="mt-10 grid place-items-center rounded-3xl bg-white py-20 text-center">
-      <Heart size={48} className="text-black/20" /><p className="mt-4 text-lg font-semibold">No saved items yet</p><p className="mt-1 text-sm text-black/55">Tap the heart on any product to save it here.</p>
-      <Link href="/ecommerce/shop" className="mt-6 rounded-full bg-black px-7 py-3 text-sm font-semibold text-white">Browse products</Link>
-    </div> : <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 lg:grid-cols-4">{list.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}</div>}
-  </div>;
+  const { wishlist, byId, addToCart, t } = useStore();
+  const list = wishlist.map(byId).filter((p): p is NonNullable<typeof p> => !!p);
+  return <>
+    <PageHeader title={t("wishlist")} text={`${list.length} saved item${list.length === 1 ? "" : "s"}`} crumbs={[[t("home"), "/ecommerce"], [t("wishlist")]]} />
+    <div className="mx-auto max-w-7xl px-4 lg:px-8">
+      {list.length > 0 && <div className="mt-6 flex justify-end"><button onClick={() => list.filter((p) => p.stock > 0).forEach((p) => addToCart(p, { silent: true }))} className={btnOutline}><ShoppingBag size={16} /> Add all to bag</button></div>}
+      {list.length === 0 ? <motion.div initial={{ opacity: 0, scale: .97 }} animate={{ opacity: 1, scale: 1 }} className="mt-10 grid place-items-center rounded-3xl bg-l-surface py-20 text-center">
+        <motion.span animate={{ scale: [1, 1.15, 1] }} transition={{ repeat: Infinity, duration: 1.6 }}><Heart size={48} className="text-l-fg/20" /></motion.span><p className="mt-4 text-lg font-semibold">No saved items yet</p><p className="mt-1 text-sm text-l-fg/55">Tap the heart on any product to save it here.</p>
+        <Link href="/ecommerce/shop" className={`${btnPrimary} mt-6`}>Browse products</Link>
+      </motion.div> : <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 lg:grid-cols-4">{list.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}</div>}
+    </div>
+  </>;
 }

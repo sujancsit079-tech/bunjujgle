@@ -73,3 +73,14 @@ a, button { -webkit-tap-highlight-color: transparent; }
 @keyframes hero-drift { to { transform: scale(1.08); } }
 @media (max-width: 768px) { .horizontal-cards { grid-auto-columns: 86%; } .hero-organic-edge { height: 5rem; } .hero-card { border-color: rgb(16 43 33 / .12); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+
+/* Lumen Wear e-commerce template theme tokens */
+.lumen { --l-bg: 247 244 239; --l-surface: 255 255 255; --l-muted: 239 235 228; --l-fg: 17 17 17; --l-accent: 200 85 61; --l-success: 47 102 70; color-scheme: light; }
+.lumen.dark { --l-bg: 17 17 17; --l-surface: 28 28 28; --l-muted: 40 40 40; --l-fg: 243 240 234; --l-accent: 226 117 92; --l-success: 110 190 140; color-scheme: dark; }
+.lumen ::selection { background: rgb(var(--l-accent)); color: #fff; }
+.lumen .scrollbar-none { scrollbar-width: none; }
+.lumen .scrollbar-none::-webkit-scrollbar { display: none; }
+.lumen .shimmer { background: linear-gradient(90deg, rgb(var(--l-muted)) 0%, rgb(var(--l-surface)) 50%, rgb(var(--l-muted)) 100%); background-size: 200% 100%; animation: lumen-shimmer 1.2s linear infinite; }
+@keyframes lumen-shimmer { to { background-position: -200% 0; } }
+.lumen input:focus-visible, .lumen textarea:focus-visible, .lumen select:focus-visible { outline: none; }
+.lumen :focus-visible { outline-color: rgb(var(--l-accent)); }
